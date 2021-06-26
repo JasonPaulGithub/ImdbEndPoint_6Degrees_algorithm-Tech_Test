@@ -33,8 +33,8 @@ public class DemoApplication implements CommandLineRunner {
 
 			Solutions:
 			https://www.baeldung.com/java-breadth-first-search
-			If BFS takes too long, use brute force (random path until complete).
-			or develop BF and move into BFS from the basic design?
+			If BFS takes too much time, use brute force (random path until complete).
+			or develop BF and move into BFS as its the same basic design?
 		*/
     }
 
