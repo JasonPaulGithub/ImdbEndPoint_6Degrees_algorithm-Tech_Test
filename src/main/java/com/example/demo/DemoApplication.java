@@ -39,7 +39,7 @@ public class DemoApplication implements CommandLineRunner {
 		findByPrimaryTitle("Carmencita");
 
 		// API to search by original title
-		// System.out.println(findByOriginalTitle("tt0000001").toString());
+		findByOriginalTitle("Carmencita");
 
 
 		/*
@@ -70,9 +70,14 @@ public class DemoApplication implements CommandLineRunner {
 		System.out.println(titles);
 	}
 
-	public TitleObject findByOriginalTitle(String id) {
+	public void findByOriginalTitle(String id) {
 		String sql = "select * from title_basics where title_basics.originaltitle = ?";
-		return jdbcTemplate.queryForObject(sql, new TitleRowMapper(), id);
+		List<TitleObject> titles = jdbcTemplate.query(sql, new TitleRowMapper(), id);
+		System.out.println(titles);
+	}
+
+	public void castAndCrew(String tconst) {
+		// query and return cast and crew via object
 	}
 
 	public ActorObject findActorbyId(String id) {
