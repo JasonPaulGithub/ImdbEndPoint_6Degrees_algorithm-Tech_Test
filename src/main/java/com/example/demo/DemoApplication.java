@@ -1,7 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.DbLogic.MyRowMapper;
-import com.example.demo.DbLogic.User;
+import com.example.demo.DbLogic.Actor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,14 +19,14 @@ public class DemoApplication implements CommandLineRunner {
 	}
 
 	@Override
-	public void run(String... args) throws Exception {
-		findOne();
+	public void run(String... args) {
+		String actor = findActorbyId("nm0000001").toString();
+		System.out.println(actor);
 	}
 
-	public void findOne() {
-			String sql = "select * from user where name = ?";
-			User actor = jdbcTemplate.queryForObject(sql, new MyRowMapper(), "Tom");
-			System.out.println(actor);
+	public Actor findActorbyId(String id) {
+			String sql = "select * from name_basics where name_basics.nconst = ?";
+			return jdbcTemplate.queryForObject(sql, new MyRowMapper(), id);
 	}
 
 	public void count() {

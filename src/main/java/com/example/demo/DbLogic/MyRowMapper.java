@@ -8,17 +8,30 @@ import java.sql.SQLException;
 /**
  * RowMapper implement interfaces, return User object
  * */
-public class MyRowMapper implements RowMapper<User>{
+public class MyRowMapper implements RowMapper<Actor>{
 
     @Override
-    public User mapRow(ResultSet resultSet, int i) throws SQLException {
+    public Actor mapRow(ResultSet resultSet, int i) throws SQLException {
+
         // Get the result set data
-        String name = resultSet.getString("name");
-        String age = resultSet.getString("age");
+        String nconst = resultSet.getString("nconst");
+        String primaryname = resultSet.getString("primaryname");
+        int birthyear = resultSet.getInt("birthyear");
+        int deathyear = resultSet.getInt("deathyear");
+        String primaryprofession = resultSet.getString("primaryprofession");
+        String knownfortitles = resultSet.getString("knownfortitles");
+
         // User object data encapsulated
-        User user = new User();
-        user.setName(name);
-        user.setAge(age);
-        return user;
+        Actor actor = new Actor();
+
+        // Set the values
+        actor.setNconst(nconst);
+        actor.setPrimaryname(primaryname);
+        actor.setBirthyear(birthyear);
+        actor.setDeathyear(deathyear);
+        actor.setPrimaryprofession(primaryprofession);
+        actor.setKnownfortitles(knownfortitles);
+
+        return actor;
     }
 }
