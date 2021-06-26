@@ -6,15 +6,24 @@ public class TitleObject {
     private String titletype;
     private String primarytitle;
     private String originaltitle;
-    private String isadult;
-    private String startyear;
-    private String endyear;
+    private Boolean isadult;
+    private int startyear;
+    private int endyear;
     private String runtimeminutes;
     private String genres;
 
     @Override
     public String toString() {
-        return primarytitle;
+        return "primarytitle: " + primarytitle
+                + " titletype: " + titletype
+                + " primarytitle: " + primarytitle
+                + " originaltitle: " + originaltitle
+                + " isadult: " + isadult
+                + " startyear: " + startyear
+                + " endyear: " + endyear
+                + " runtimeminutes: " + runtimeminutes
+                + " genres: " + genres
+                ;
     }
 
     public String getTconst() {
@@ -49,27 +58,27 @@ public class TitleObject {
         this.originaltitle = originaltitle;
     }
 
-    public String getIsadult() {
+    public Boolean getIsadult() {
         return isadult;
     }
 
-    public void setIsadult(String isadult) {
+    public void setIsadult(Boolean isadult) {
         this.isadult = isadult;
     }
 
-    public String getStartyear() {
+    public int getStartyear() {
         return startyear;
     }
 
-    public void setStartyear(String startyear) {
+    public void setStartyear(int startyear) {
         this.startyear = startyear;
     }
 
-    public String getEndyear() {
+    public int getEndyear() {
         return endyear;
     }
 
-    public void setEndyear(String endyear) {
+    public void setEndyear(int endyear) {
         this.endyear = endyear;
     }
 

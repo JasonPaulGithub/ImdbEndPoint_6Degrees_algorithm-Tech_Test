@@ -10,6 +10,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.List;
+
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
 
@@ -24,7 +26,7 @@ public class DemoApplication implements CommandLineRunner {
 	public void run(String... args) {
 
 		// ### Warmup: Find Actor by ID
-		// System.out.println(findActorbyId("nm0000001").toString());
+		System.out.println(findActorbyId("nm0000001").toString());
 
 		/*
 			### Requirement #1 (easy):
@@ -34,7 +36,7 @@ public class DemoApplication implements CommandLineRunner {
 		*/
 
 		// API to search by primary title
-		System.out.println(findByPrimaryTitle("tt0000001"));
+		findByPrimaryTitle("Carmencita");
 
 		// API to search by original title
 		// System.out.println(findByOriginalTitle("tt0000001").toString());
@@ -62,19 +64,25 @@ public class DemoApplication implements CommandLineRunner {
 
 	// select * from title_basics where title_basics.primaryTitle = 'Carmencita'
 
-	public TitleObject findByPrimaryTitle(String id) {
-		String sql = "select * from title_basics where title_basics.tconst = ?";
-		return jdbcTemplate.queryForObject(sql, new TitleRowMapper(), id);
+	public void findByPrimaryTitle(String id) {
+		String sql = "select * from title_basics where title_basics.primarytitle = ?";
+		List<TitleObject> titles = jdbcTemplate.query(sql, new TitleRowMapper(), id);
+		System.out.println(titles);
 	}
 
 	public TitleObject findByOriginalTitle(String id) {
-		String sql = "select * from title_basics where title_basics.primaryTitle = ?";
+		String sql = "select * from title_basics where title_basics.originaltitle = ?";
 		return jdbcTemplate.queryForObject(sql, new TitleRowMapper(), id);
 	}
 
 	public ActorObject findActorbyId(String id) {
 			String sql = "select * from name_basics where name_basics.nconst = ?";
 			return jdbcTemplate.queryForObject(sql, new ActorRowMapper(), id);
+	}
+
+	public TitleObject findTitleById(String id) {
+		String sql = "select * from title_basics where title_basics.tconst = ?";
+		return jdbcTemplate.queryForObject(sql, new TitleRowMapper(), id);
 	}
 
 	public void count() {

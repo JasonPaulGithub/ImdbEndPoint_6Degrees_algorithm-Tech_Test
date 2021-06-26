@@ -10,6 +10,7 @@ import java.sql.SQLException;
  * */
 
 public class TitleRowMapper implements RowMapper<TitleObject> {
+
     @Override
     public TitleObject mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
@@ -18,9 +19,9 @@ public class TitleRowMapper implements RowMapper<TitleObject> {
         String titletype = resultSet.getString("titletype");
         String primarytitle = resultSet.getString("primarytitle");
         String originaltitle = resultSet.getString("originaltitle");
-        String isadult = resultSet.getString("isadult");
-        String startyear = resultSet.getString("startyear");
-        String endyear = resultSet.getString("endyear");
+        Boolean isadult = resultSet.getBoolean("isadult");
+        int startyear = resultSet.getInt("startyear");
+        int endyear = resultSet.getInt("endyear");
         String runtimeminutes = resultSet.getString("runtimeminutes");
         String genres = resultSet.getString("genres");
 
@@ -38,6 +39,6 @@ public class TitleRowMapper implements RowMapper<TitleObject> {
         titleObject.setRuntimeminutes(runtimeminutes);
         titleObject.setGenres(genres);
 
-        return null;
+        return titleObject;
     }
 }
