@@ -8,10 +8,10 @@ import java.sql.SQLException;
 /**
  * RowMapper implement interfaces, return Actor object
  * */
-public class ActorRowMapper implements RowMapper<ActorObject>{
+public class ActorRowMapper implements RowMapper<ActorPojo>{
 
     @Override
-    public ActorObject mapRow(ResultSet resultSet, int i) throws SQLException {
+    public ActorPojo mapRow(ResultSet resultSet, int i) throws SQLException {
 
         // Get the result set data
         String nconst = resultSet.getString("nconst");
@@ -22,16 +22,16 @@ public class ActorRowMapper implements RowMapper<ActorObject>{
         String knownfortitles = resultSet.getString("knownfortitles");
 
         // ActorObject object data encapsulated
-        ActorObject actorObject = new ActorObject();
+        ActorPojo actorPojo = new ActorPojo();
 
         // Set the values
-        actorObject.setNconst(nconst);
-        actorObject.setPrimaryname(primaryname);
-        actorObject.setBirthyear(birthyear);
-        actorObject.setDeathyear(deathyear);
-        actorObject.setPrimaryprofession(primaryprofession);
-        actorObject.setKnownfortitles(knownfortitles);
+        actorPojo.setNconst(nconst);
+        actorPojo.setPrimaryname(primaryname);
+        actorPojo.setBirthyear(birthyear);
+        actorPojo.setDeathyear(deathyear);
+        actorPojo.setPrimaryprofession(primaryprofession);
+        actorPojo.setKnownfortitles(knownfortitles);
 
-        return actorObject;
+        return actorPojo;
     }
 }

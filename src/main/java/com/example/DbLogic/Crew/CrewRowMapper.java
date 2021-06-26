@@ -5,10 +5,10 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CrewRowMapper implements RowMapper<CrewObject> {
+public class CrewRowMapper implements RowMapper<CrewPojo> {
 
     @Override
-    public CrewObject mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+    public CrewPojo mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
         // Get the result set data
         String tconst = resultSet.getString("tconst");
@@ -16,13 +16,13 @@ public class CrewRowMapper implements RowMapper<CrewObject> {
         String writers = resultSet.getString("writers");
 
         // ActorObject object data encapsulated
-        CrewObject crewObject = new CrewObject();
+        CrewPojo crewPojo = new CrewPojo();
 
         // Set the values
-        crewObject.setTconst(tconst);
-        crewObject.setDirectors(directors);
-        crewObject.setWriters(writers);
+        crewPojo.setTconst(tconst);
+        crewPojo.setDirectors(directors);
+        crewPojo.setWriters(writers);
 
-        return crewObject;
+        return crewPojo;
     }
 }

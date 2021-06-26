@@ -1,24 +1,22 @@
 package com.example.demo;
 
-import com.example.ApiLogic.Greeting;
 import com.example.DbLogic.Actor.ActorRowMapper;
-import com.example.DbLogic.Actor.ActorObject;
-import com.example.DbLogic.Title.TitleObject;
+import com.example.DbLogic.Actor.ActorPojo;
+import com.example.DbLogic.Crew.CrewPojo;
+import com.example.DbLogic.Crew.CrewRowMapper;
+import com.example.DbLogic.Title.TitlePojo;
 import com.example.DbLogic.Title.TitleRowMapper;
+import com.example.DbLogic.TitleCrew.TitleCrewPojo;
 import com.example.DbLogic.TitleCrew.TitleCrewRowMapper;
 import com.example.DbLogic.TitleRated.TitleRateRowMapper;
-import com.example.DbLogic.TitleRated.TitleRatedObject;
+import com.example.DbLogic.TitleRated.TitleRatePojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
@@ -37,7 +35,6 @@ public class DemoApplication implements CommandLineRunner {
 		System.out.println(findActorbyId("nm0000001").toString());
 
 		/*
-			### Requirement #1 (easy):
 			IMDb copycat: Present the user with endpoint for allowing them to search by
 			movie’s primary title or original title. The outcome should be related
 			information to that title, including cast and crew.
@@ -45,14 +42,13 @@ public class DemoApplication implements CommandLineRunner {
 
 		// API to search by primary title
 		System.out.println("API to search by primary title::");
-		findByPrimaryTitle("Carmencita");
+		findByPrimaryTitle("Miss Jerry");
 
 		// API to search by original title
 		System.out.println("API to search by original title::");
-		findByOriginalTitle("Carmencita");
+		findByOriginalTitle("Miss Jerry");
 
 		/*
-			### Requirement #2 (easy):
 			Top rated movies: Given a query by the user, you must provide what are the top
 			rated movies for a genre (If the user searches horror, then it should show a
 			list of top rated horror movies).
@@ -61,10 +57,8 @@ public class DemoApplication implements CommandLineRunner {
 		topRatedByGenre("Horror");
 
 		/*
-			### Requirement #3 (difficult):
-			[Six degrees of Kevin
-			Bacon](https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon): Given a query
-			by the user, you must provide what’s the degree of separation between the person
+			Six degrees of Kevin Bacon :
+			Given a query by the user, you must provide what’s the degree of separation between the person
 			(e.g. actor or actress) the user has entered and Kevin Bacon.
 		*/
 
@@ -76,7 +70,8 @@ public class DemoApplication implements CommandLineRunner {
 				"SELECT * FROM title_basics INNER JOIN title_crew " +
 				"ON title_basics.tconst = title_crew.tconst " +
 				"WHERE title_basics.primarytitle = ?";
-		List<TitleObject> titles = jdbcTemplate.query(sql, new TitleCrewRowMapper(), id);
+		List<TitleCrewPojo> titles = jdbcTemplate.query(sql, new TitleCrewRowMapper(jdbcTemplate), id);
+
 		System.out.println(titles);
 	}
 
@@ -85,7 +80,7 @@ public class DemoApplication implements CommandLineRunner {
 				"SELECT * FROM title_basics INNER JOIN title_crew " +
 						"ON title_basics.tconst = title_crew.tconst " +
 						"WHERE title_basics.originaltitle = ?";
-		List<TitleObject> titles = jdbcTemplate.query(sql, new TitleCrewRowMapper(), id);
+		List<TitleCrewPojo> titles = jdbcTemplate.query(sql, new TitleCrewRowMapper(jdbcTemplate), id);
 		System.out.println(titles);
 	}
 
@@ -94,21 +89,22 @@ public class DemoApplication implements CommandLineRunner {
 				= "SELECT * FROM title_ratings INNER JOIN title_basics " +
 				"ON title_ratings.tconst = title_basics.tconst WHERE title_basics.genres " +
 				"LIKE '"+ genre +"' ORDER BY title_ratings.averagerating DESC LIMIT 10";
-		List<TitleRatedObject> titles = jdbcTemplate.query(sql, new TitleRateRowMapper());
+		List<TitleRatePojo> titles = jdbcTemplate.query(sql, new TitleRateRowMapper());
 		System.out.println(titles);
 	}
 
-	public void getCastAndCrew(String tconst) {
-		// query and return cast and crew via object
-		// and process their actor id
+	public void getCastAndCrew(String nconst) {
+		String sql = "select * from name_basics where name_basics.nconst = ?";
+		List<ActorPojo> titles = jdbcTemplate.query(sql, new ActorRowMapper(), nconst);
+		System.out.println(titles);
 	}
 
-	public ActorObject findActorbyId(String id) {
-			String sql = "select * from name_basics where name_basics.nconst = ?";
-			return jdbcTemplate.queryForObject(sql, new ActorRowMapper(), id);
+	public ActorPojo findActorbyId(String id) {
+		String sql = "select * from name_basics where name_basics.nconst = ?";
+		return jdbcTemplate.queryForObject(sql, new ActorRowMapper(), id);
 	}
 
-	public TitleObject findTitleById(String id) {
+	public TitlePojo findTitleById(String id) {
 		String sql = "select * from title_basics where title_basics.tconst = ?";
 		return jdbcTemplate.queryForObject(sql, new TitleRowMapper(), id);
 	}

@@ -9,10 +9,10 @@ import java.sql.SQLException;
  * RowMapper implement interfaces, return Actor object
  * */
 
-public class TitleRowMapper implements RowMapper<TitleObject> {
+public class TitleRowMapper implements RowMapper<TitlePojo> {
 
     @Override
-    public TitleObject mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+    public TitlePojo mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
         // Get the result set data
         String tconst = resultSet.getString("tconst");
@@ -26,19 +26,19 @@ public class TitleRowMapper implements RowMapper<TitleObject> {
         String genres = resultSet.getString("genres");
 
         // TitleObject object data encapsulated
-        TitleObject titleObject = new TitleObject();
+        TitlePojo titlePojo = new TitlePojo();
 
         // Set the values
-        titleObject.setTconst(tconst);
-        titleObject.setTitletype(titletype);
-        titleObject.setPrimarytitle(primarytitle);
-        titleObject.setOriginaltitle(originaltitle);
-        titleObject.setIsadult(isadult);
-        titleObject.setStartyear(startyear);
-        titleObject.setEndyear(endyear);
-        titleObject.setRuntimeminutes(runtimeminutes);
-        titleObject.setGenres(genres);
+        titlePojo.setTconst(tconst);
+        titlePojo.setTitletype(titletype);
+        titlePojo.setPrimarytitle(primarytitle);
+        titlePojo.setOriginaltitle(originaltitle);
+        titlePojo.setIsadult(isadult);
+        titlePojo.setStartyear(startyear);
+        titlePojo.setEndyear(endyear);
+        titlePojo.setRuntimeminutes(runtimeminutes);
+        titlePojo.setGenres(genres);
 
-        return titleObject;
+        return titlePojo;
     }
 }

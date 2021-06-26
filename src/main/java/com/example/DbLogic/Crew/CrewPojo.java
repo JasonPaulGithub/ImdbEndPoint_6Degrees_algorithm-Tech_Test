@@ -1,6 +1,6 @@
 package com.example.DbLogic.Crew;
 
-public class CrewObject {
+public class CrewPojo {
 
     private String tconst;
     private String directors;

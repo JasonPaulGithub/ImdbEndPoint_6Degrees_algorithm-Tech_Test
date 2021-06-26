@@ -1,8 +1,8 @@
 package com.example.DbLogic.TitleRated;
 
-import com.example.DbLogic.Title.TitleObject;
+import com.example.DbLogic.Title.TitlePojo;
 
-public class TitleRatedObject extends TitleObject {
+public class TitleRatePojo extends TitlePojo {
 
     private String averagerating;
     private int numvotes;
@@ -10,15 +10,12 @@ public class TitleRatedObject extends TitleObject {
     public String getAveragerating() {
         return averagerating;
     }
-
     public void setAveragerating(String averagerating) {
         this.averagerating = averagerating;
     }
-
     public int getNumvotes() {
         return numvotes;
     }
-
     public void setNumvotes(int numvotes) {
         this.numvotes = numvotes;
     }

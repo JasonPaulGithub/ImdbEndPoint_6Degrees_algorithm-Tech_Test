@@ -1,6 +1,6 @@
 package com.example.DbLogic.Title;
 
-public class TitleObject {
+public class TitlePojo {
 
     private String tconst;
     private String titletype;

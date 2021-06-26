@@ -1,16 +1,15 @@
 package com.example.DbLogic.TitleRated;
 
 
-import com.example.DbLogic.Title.TitleObject;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class TitleRateRowMapper implements RowMapper<TitleRatedObject> {
+public class TitleRateRowMapper implements RowMapper<TitleRatePojo> {
 
     @Override
-    public TitleRatedObject mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+    public TitleRatePojo mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
         // Get the result set data
         String tconst = resultSet.getString("tconst");
@@ -26,7 +25,7 @@ public class TitleRateRowMapper implements RowMapper<TitleRatedObject> {
         int numvotes = resultSet.getInt("numvotes");
 
         // TitleObject object data encapsulated
-        TitleRatedObject titleObject = new TitleRatedObject();
+        TitleRatePojo titleObject = new TitleRatePojo();
 
         // Set the values
         titleObject.setTconst(tconst);
