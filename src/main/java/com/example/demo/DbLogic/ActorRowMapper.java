@@ -8,7 +8,7 @@ import java.sql.SQLException;
 /**
  * RowMapper implement interfaces, return User object
  * */
-public class MyRowMapper implements RowMapper<Actor>{
+public class ActorRowMapper implements RowMapper<Actor>{
 
     @Override
     public Actor mapRow(ResultSet resultSet, int i) throws SQLException {
