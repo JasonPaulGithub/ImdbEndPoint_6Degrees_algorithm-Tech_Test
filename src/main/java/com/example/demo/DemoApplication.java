@@ -5,6 +5,7 @@ import com.example.DbLogic.Actor.ActorRowMapper;
 import com.example.DbLogic.Actor.ActorObject;
 import com.example.DbLogic.Title.TitleObject;
 import com.example.DbLogic.Title.TitleRowMapper;
+import com.example.DbLogic.TitleCrew.TitleCrewRowMapper;
 import com.example.DbLogic.TitleRated.TitleRateRowMapper;
 import com.example.DbLogic.TitleRated.TitleRatedObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,8 +72,11 @@ public class DemoApplication implements CommandLineRunner {
 	}
 
 	public void findByPrimaryTitle(String id) {
-		String sql = "select * from title_basics where title_basics.primarytitle = ?";
-		List<TitleObject> titles = jdbcTemplate.query(sql, new TitleRowMapper(), id);
+		String sql =
+				"SELECT * FROM title_basics INNER JOIN title_crew " +
+				"ON title_basics.tconst = title_crew.tconst " +
+				"WHERE title_basics.primarytitle = ?";
+		List<TitleObject> titles = jdbcTemplate.query(sql, new TitleCrewRowMapper(), id);
 		System.out.println(titles);
 	}
 
