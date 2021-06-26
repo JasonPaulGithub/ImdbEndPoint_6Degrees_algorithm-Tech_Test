@@ -3,6 +3,7 @@ package com.example.demo;
 import com.example.DbLogic.Actor.ActorRowMapper;
 import com.example.DbLogic.Actor.ActorObject;
 import com.example.DbLogic.Title.TitleObject;
+import com.example.DbLogic.Title.TitleRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,7 +24,7 @@ public class DemoApplication implements CommandLineRunner {
 	public void run(String... args) {
 
 		// ### Warmup: Find Actor by ID
-		System.out.println(findActorbyId("nm0000001").toString());
+		// System.out.println(findActorbyId("nm0000001").toString());
 
 		/*
 			### Requirement #1 (easy):
@@ -33,10 +34,10 @@ public class DemoApplication implements CommandLineRunner {
 		*/
 
 		// API to search by primary title
-		System.out.println(findActorbyId("nm0000001").toString());
-
+		System.out.println(findByPrimaryTitle("tt0000001"));
 
 		// API to search by original title
+		// System.out.println(findByOriginalTitle("tt0000001").toString());
 
 
 		/*
@@ -62,13 +63,13 @@ public class DemoApplication implements CommandLineRunner {
 	// select * from title_basics where title_basics.primaryTitle = 'Carmencita'
 
 	public TitleObject findByPrimaryTitle(String id) {
-		String sql = "select * from title_basics where title_basics.originalTitle = ?";
-		return null;
+		String sql = "select * from title_basics where title_basics.tconst = ?";
+		return jdbcTemplate.queryForObject(sql, new TitleRowMapper(), id);
 	}
 
 	public TitleObject findByOriginalTitle(String id) {
 		String sql = "select * from title_basics where title_basics.primaryTitle = ?";
-		return null;
+		return jdbcTemplate.queryForObject(sql, new TitleRowMapper(), id);
 	}
 
 	public ActorObject findActorbyId(String id) {

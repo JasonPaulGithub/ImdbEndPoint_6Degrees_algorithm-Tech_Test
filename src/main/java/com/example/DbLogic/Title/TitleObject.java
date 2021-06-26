@@ -12,6 +12,11 @@ public class TitleObject {
     private String runtimeminutes;
     private String genres;
 
+    @Override
+    public String toString() {
+        return primarytitle;
+    }
+
     public String getTconst() {
         return tconst;
     }
@@ -83,4 +88,5 @@ public class TitleObject {
     public void setGenres(String genres) {
         this.genres = genres;
     }
+
 }
