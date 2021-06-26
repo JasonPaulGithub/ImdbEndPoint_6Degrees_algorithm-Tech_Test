@@ -6,12 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * RowMapper implement interfaces, return User object
+ * RowMapper implement interfaces, return Actor object
  * */
-public class ActorRowMapper implements RowMapper<Actor>{
+public class ActorRowMapper implements RowMapper<ActorObject>{
 
     @Override
-    public Actor mapRow(ResultSet resultSet, int i) throws SQLException {
+    public ActorObject mapRow(ResultSet resultSet, int i) throws SQLException {
 
         // Get the result set data
         String nconst = resultSet.getString("nconst");
@@ -21,17 +21,17 @@ public class ActorRowMapper implements RowMapper<Actor>{
         String primaryprofession = resultSet.getString("primaryprofession");
         String knownfortitles = resultSet.getString("knownfortitles");
 
-        // User object data encapsulated
-        Actor actor = new Actor();
+        // ActorObject object data encapsulated
+        ActorObject actorObject = new ActorObject();
 
         // Set the values
-        actor.setNconst(nconst);
-        actor.setPrimaryname(primaryname);
-        actor.setBirthyear(birthyear);
-        actor.setDeathyear(deathyear);
-        actor.setPrimaryprofession(primaryprofession);
-        actor.setKnownfortitles(knownfortitles);
+        actorObject.setNconst(nconst);
+        actorObject.setPrimaryname(primaryname);
+        actorObject.setBirthyear(birthyear);
+        actorObject.setDeathyear(deathyear);
+        actorObject.setPrimaryprofession(primaryprofession);
+        actorObject.setKnownfortitles(knownfortitles);
 
-        return actor;
+        return actorObject;
     }
 }

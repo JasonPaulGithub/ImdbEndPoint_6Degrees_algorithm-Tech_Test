@@ -1,7 +1,8 @@
 package com.example.demo;
 
 import com.example.DbLogic.Actor.ActorRowMapper;
-import com.example.DbLogic.Actor.Actor;
+import com.example.DbLogic.Actor.ActorObject;
+import com.example.DbLogic.Title.TitleObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -34,7 +35,9 @@ public class DemoApplication implements CommandLineRunner {
 		// API to search by primary title
 		System.out.println(findActorbyId("nm0000001").toString());
 
+
 		// API to search by original title
+
 
 		/*
 			### Requirement #2 (easy):
@@ -56,7 +59,19 @@ public class DemoApplication implements CommandLineRunner {
 		// The Baconator
 	}
 
-	public Actor findActorbyId(String id) {
+	// select * from title_basics where title_basics.primaryTitle = 'Carmencita'
+
+	public TitleObject findByPrimaryTitle(String id) {
+		String sql = "select * from title_basics where title_basics.originalTitle = ?";
+		return null;
+	}
+
+	public TitleObject findByOriginalTitle(String id) {
+		String sql = "select * from title_basics where title_basics.primaryTitle = ?";
+		return null;
+	}
+
+	public ActorObject findActorbyId(String id) {
 			String sql = "select * from name_basics where name_basics.nconst = ?";
 			return jdbcTemplate.queryForObject(sql, new ActorRowMapper(), id);
 	}

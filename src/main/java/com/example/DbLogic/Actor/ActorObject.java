@@ -4,7 +4,7 @@ package com.example.DbLogic.Actor;
  * Data encapsulation class
  * */
 
-public class Actor {
+public class ActorObject {
 
     private String nconst;
     private String primaryname;
