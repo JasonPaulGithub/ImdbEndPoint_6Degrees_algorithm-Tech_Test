@@ -58,5 +58,4 @@ public class TitleCrewRowMapper implements RowMapper<TitleCrewPojo> {
         return titlePojo;
     }
 
-
 }
