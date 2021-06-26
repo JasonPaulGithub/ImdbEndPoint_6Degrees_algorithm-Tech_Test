@@ -81,8 +81,11 @@ public class DemoApplication implements CommandLineRunner {
 	}
 
 	public void findByOriginalTitle(String id) {
-		String sql = "select * from title_basics where title_basics.originaltitle = ?";
-		List<TitleObject> titles = jdbcTemplate.query(sql, new TitleRowMapper(), id);
+		String sql =
+				"SELECT * FROM title_basics INNER JOIN title_crew " +
+						"ON title_basics.tconst = title_crew.tconst " +
+						"WHERE title_basics.originaltitle = ?";
+		List<TitleObject> titles = jdbcTemplate.query(sql, new TitleCrewRowMapper(), id);
 		System.out.println(titles);
 	}
 
