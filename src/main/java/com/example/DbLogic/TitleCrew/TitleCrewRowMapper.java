@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class TitleCrewRowMapper implements RowMapper {
+public class TitleCrewRowMapper implements RowMapper<TitleCrewPojo> {
 
     JdbcTemplate jdbcTemplate;
 
@@ -18,7 +18,7 @@ public class TitleCrewRowMapper implements RowMapper {
     }
 
     @Override
-    public Object mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+    public TitleCrewPojo mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
         // Get the result set data
         String tconst = resultSet.getString("tconst");
