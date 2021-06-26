@@ -15,13 +15,12 @@ public class TitlePojo {
     @Override
     public String toString() {
         return "primarytitle: " + primarytitle
-                + " titletype: " + titletype
-                + " primarytitle: " + primarytitle
-                + " originaltitle: " + originaltitle
-                + " isadult: " + isadult
-                + " startyear: " + startyear
-                + " endyear: " + endyear
-                + " runtimeminutes: " + runtimeminutes
+                + ", originaltitle: " + originaltitle
+                + ", titletype: " + titletype
+                + ", isadult: " + isadult
+                + ", startyear: " + startyear
+                + ", endyear: " + endyear
+                + ", runtimeminutes: " + runtimeminutes
                 + " genres: " + genres
                 ;
     }

@@ -2,8 +2,6 @@ package com.example.demo;
 
 import com.example.DbLogic.Actor.ActorRowMapper;
 import com.example.DbLogic.Actor.ActorPojo;
-import com.example.DbLogic.Crew.CrewPojo;
-import com.example.DbLogic.Crew.CrewRowMapper;
 import com.example.DbLogic.Title.TitlePojo;
 import com.example.DbLogic.Title.TitleRowMapper;
 import com.example.DbLogic.TitleCrew.TitleCrewPojo;

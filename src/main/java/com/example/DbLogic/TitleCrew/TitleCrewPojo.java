@@ -10,9 +10,8 @@ public class TitleCrewPojo extends TitlePojo {
     @Override
     public String toString() {
         return "primarytitle: " + this.getPrimarytitle()
-                + ", titletype: " + this.getTitletype()
-                + ", primarytitle: " + this.getPrimarytitle()
                 + ", originaltitle: " + this.getOriginaltitle()
+                + ", titletype: " + this.getTitletype()
                 + ", isadult: " + this.getIsadult()
                 + ", startyear: " + this.getStartyear()
                 + ", endyear: " + this.getEndyear()
