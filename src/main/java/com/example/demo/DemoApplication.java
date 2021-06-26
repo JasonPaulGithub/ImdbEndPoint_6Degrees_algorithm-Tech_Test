@@ -1,16 +1,23 @@
 package com.example.demo;
 
+import com.example.ApiLogic.Greeting;
 import com.example.DbLogic.Actor.ActorRowMapper;
 import com.example.DbLogic.Actor.ActorObject;
 import com.example.DbLogic.Title.TitleObject;
 import com.example.DbLogic.Title.TitleRowMapper;
+import com.example.DbLogic.TitleRated.TitleRateRowMapper;
+import com.example.DbLogic.TitleRated.TitleRatedObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
@@ -36,11 +43,12 @@ public class DemoApplication implements CommandLineRunner {
 		*/
 
 		// API to search by primary title
+		System.out.println("API to search by primary title::");
 		findByPrimaryTitle("Carmencita");
 
 		// API to search by original title
+		System.out.println("API to search by original title::");
 		findByOriginalTitle("Carmencita");
-
 
 		/*
 			### Requirement #2 (easy):
@@ -48,8 +56,8 @@ public class DemoApplication implements CommandLineRunner {
 			rated movies for a genre (If the user searches horror, then it should show a
 			list of top rated horror movies).
 		*/
-
-		// Filter top rated movies by genre and provide descending score
+		System.out.println("topRatedByGenre::");
+		topRatedByGenre("Horror");
 
 		/*
 			### Requirement #3 (difficult):
@@ -61,8 +69,6 @@ public class DemoApplication implements CommandLineRunner {
 
 		// The Brute Baconator
 	}
-
-	// select * from title_basics where title_basics.primaryTitle = 'Carmencita'
 
 	public void findByPrimaryTitle(String id) {
 		String sql = "select * from title_basics where title_basics.primarytitle = ?";
@@ -76,7 +82,16 @@ public class DemoApplication implements CommandLineRunner {
 		System.out.println(titles);
 	}
 
-	public void castAndCrew(String tconst) {
+	public void topRatedByGenre(String genre){
+		String sql
+				= "SELECT * FROM title_ratings INNER JOIN title_basics " +
+				"ON title_ratings.tconst = title_basics.tconst WHERE title_basics.genres " +
+				"LIKE '"+ genre +"' ORDER BY title_ratings.averagerating DESC LIMIT 10";
+		List<TitleRatedObject> titles = jdbcTemplate.query(sql, new TitleRateRowMapper());
+		System.out.println(titles);
+	}
+
+	public void getCastAndCrew(String tconst) {
 		// query and return cast and crew via object
 		// and process their actor id
 	}
@@ -91,9 +106,18 @@ public class DemoApplication implements CommandLineRunner {
 		return jdbcTemplate.queryForObject(sql, new TitleRowMapper(), id);
 	}
 
-	public void count() {
-		String sql = "SELECT COUNT(*) FROM public.name_basics";
-		int count = jdbcTemplate.queryForObject(sql, Integer.class);
-		System.out.println ( "The total number of data:" + count);
+	/*
+		@RestController
+	public class GreetingController {
+
+		private static final String template = "Hello, %s!";
+		private final AtomicLong counter = new AtomicLong();
+
+		@GetMapping("/greeting")
+		public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+
+			return new Greeting(counter.incrementAndGet(), String.format(template, name));
+		}
 	}
+	*/
 }
