@@ -1,7 +1,7 @@
 package com.example.demo;
 
-import com.example.demo.DbLogic.ActorRowMapper;
-import com.example.demo.DbLogic.Actor;
+import com.example.DbLogic.Actor.ActorRowMapper;
+import com.example.DbLogic.Actor.Actor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -26,27 +26,34 @@ public class DemoApplication implements CommandLineRunner {
 
 		/*
 			### Requirement #1 (easy):
-			IMDb copycat: Present the actor with endpoint for allowing them to search by
+			IMDb copycat: Present the user with endpoint for allowing them to search by
 			movie’s primary title or original title. The outcome should be related
 			information to that title, including cast and crew.
 		*/
 
+		// API to search by primary title
+		System.out.println(findActorbyId("nm0000001").toString());
+
+		// API to search by original title
+
 		/*
 			### Requirement #2 (easy):
-			Top rated movies: Given a query by the actor, you must provide what are the top
+			Top rated movies: Given a query by the user, you must provide what are the top
 			rated movies for a genre (If the actor searches horror, then it should show a
 			list of top rated horror movies).
 		*/
+
+		// Filter top rated movies by genre
 
 		/*
 			### Requirement #3 (difficult):
 			[Six degrees of Kevin
 			Bacon](https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon): Given a query
-			by the actor, you must provide what’s the degree of separation between the person
-			(e.g. actor or actress) the actor has entered and Kevin Bacon.
+			by the user, you must provide what’s the degree of separation between the person
+			(e.g. actor or actress) the user has entered and Kevin Bacon.
 		*/
 
-
+		// The Baconator
 	}
 
 	public Actor findActorbyId(String id) {
