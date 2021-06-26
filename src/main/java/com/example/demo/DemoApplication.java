@@ -45,11 +45,11 @@ public class DemoApplication implements CommandLineRunner {
 		/*
 			### Requirement #2 (easy):
 			Top rated movies: Given a query by the user, you must provide what are the top
-			rated movies for a genre (If the actor searches horror, then it should show a
+			rated movies for a genre (If the user searches horror, then it should show a
 			list of top rated horror movies).
 		*/
 
-		// Filter top rated movies by genre
+		// Filter top rated movies by genre and provide descending score
 
 		/*
 			### Requirement #3 (difficult):
@@ -59,7 +59,7 @@ public class DemoApplication implements CommandLineRunner {
 			(e.g. actor or actress) the user has entered and Kevin Bacon.
 		*/
 
-		// The Baconator
+		// The Brute Baconator
 	}
 
 	// select * from title_basics where title_basics.primaryTitle = 'Carmencita'
@@ -78,6 +78,7 @@ public class DemoApplication implements CommandLineRunner {
 
 	public void castAndCrew(String tconst) {
 		// query and return cast and crew via object
+		// and process their actor id
 	}
 
 	public ActorObject findActorbyId(String id) {
