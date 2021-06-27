@@ -10,9 +10,9 @@ public class Baconator {
     }
 
     public String assignBaconite(Placeholder actor) {
-        Baconite loyalBaconite = new Baconite(actor, routeMap);
+        Baconite loyalBaconite = new Baconite(actor);
         if (loyalBaconite.getResult()){
-            return String.join(",", routeMap);
+            return "result: " + String.join(",", routeMap) + " in " + routeMap.size() + " steps";
         } else {
             return "Could not find the bacon!";
         }

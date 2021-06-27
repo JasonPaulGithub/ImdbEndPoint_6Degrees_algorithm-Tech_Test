@@ -5,4 +5,5 @@ import java.util.Set;
 
 public interface BaconInterface {
     Set<String> routeMap = new HashSet<>();
+    Set<String> traversed = new HashSet<>();
 }
