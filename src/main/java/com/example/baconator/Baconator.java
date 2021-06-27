@@ -1,39 +1,62 @@
+// The brave Baconite travels the land far and wide to find the rare bacon known as Kevin.
+
 package com.example.baconator;
 
-import static com.example.baconator.BaconInterface.*;
+import java.util.LinkedHashSet;
 
-public class Baconator {
+public class Baconator implements BaconInterface {
 
-    // Constructor
-    public Baconator(Placeholder root) {
-        routeMap.add(root.getActorName());
+    private LinkedHashSet<String> currentRoute = new LinkedHashSet<>();
+    private Placeholder actor;
+
+    public void setCurrentRoute(LinkedHashSet<String> currentRoute) {
+        this.currentRoute = currentRoute;
     }
 
-    public String assignBaconite(Placeholder actor) {
-        Baconite loyalBaconite = new Baconite(actor);
-        if (loyalBaconite.getResult()){
-            return "result: " + String.join(",", routeMap) + " in " + routeMap.size() + " steps";
+    public void setActor(Placeholder actor) {
+        this.actor = actor;
+    }
+
+    public void assignRoot(Placeholder actor) {
+        routeMap.add(actor.name());
+        traversed.add(actor.name());
+        this.currentRoute.add(actor.name());
+        this.actor = actor;
+    }
+
+    public String result() {
+        return "result: "
+                + String.join(",", routeMap)
+                + " in " + routeMap.size() + " steps";
+    }
+
+    public void search() {
+        if (actor.isKevinBacon()) {
+            System.out.println("found kevin");
+            currentRoute.add(actor.name());
+            routeMap.addAll(currentRoute);
+            System.out.println(result());
         } else {
-            return "Could not find the bacon!";
+            for (Movie movie : actor.getMovieList()) {
+                System.out.println("Searching connected Movie : " + movie.title());
+                currentRoute.add(movie.title());
+
+                for (Placeholder actor : movie.getActors()) {
+                    if (traversed.contains(actor.name())) {
+                        System.out.println("Actor already searched :" + actor.name());
+                        // delete movie from movie.list and check list size, if size=0 return null
+                    } else {
+                        System.out.println("searching " + actor.name());
+                        traversed.add(actor.name());
+                        currentRoute.add(actor.name());
+                        Baconator baconite = new Baconator();
+                        baconite.setActor(actor);
+                        baconite.setCurrentRoute(currentRoute);
+                        baconite.search();
+                    }
+                }
+            }
         }
     }
 
 }
-
-/*
- * create 10 threads
- *
- * thread operations:
- * Set <String movieCheckedList>
- * Set <String actorCheckedList>
- * Set record <Int index, Placeholder actor>
-
- * load root placeholder, record.add
- * if placeholder != kevin bacon then
- * get list of movies for placeholder
- * select random movie not on checkedList, select random actor not on checkedList
- * repeat cycle
- * if no actors left, add movie to checked list, return to parent node
- *
- * - we could refine and finalize the best route with an A* algorithm
- * */

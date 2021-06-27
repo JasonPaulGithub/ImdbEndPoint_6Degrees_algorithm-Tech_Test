@@ -8,7 +8,7 @@ public class Movie {
     private String movieTitle;
     private List<Placeholder> actors = new ArrayList<>();
 
-    public String getMovieTitle() {
+    public String title() {
         return movieTitle;
     }
 

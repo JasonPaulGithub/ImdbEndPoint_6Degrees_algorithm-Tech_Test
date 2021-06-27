@@ -1,9 +1,10 @@
 package com.example.baconator;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public interface BaconInterface {
-    Set<String> routeMap = new HashSet<>();
+    LinkedHashSet<String> routeMap = new LinkedHashSet<>();
     Set<String> traversed = new HashSet<>();
 }

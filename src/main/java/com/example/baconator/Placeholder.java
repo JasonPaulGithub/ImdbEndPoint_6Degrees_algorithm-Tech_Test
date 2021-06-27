@@ -26,7 +26,7 @@ public class Placeholder {
         this.actorName = actorName;
     }
 
-    public String getActorName() {
+    public String name() {
         return actorName;
     }
 
