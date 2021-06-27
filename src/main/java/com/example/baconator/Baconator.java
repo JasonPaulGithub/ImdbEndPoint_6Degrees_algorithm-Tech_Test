@@ -27,12 +27,15 @@ public class Baconator implements BaconInterface {
     public String result() {
         return "result: "
                 + String.join(",", routeMap)
-                + " in " + routeMap.size() + " steps";
+                + " in " + getRouteMapSize() + " steps";
+    }
+
+    public int getRouteMapSize(){
+        return routeMap.size();
     }
 
     public void search() {
         if (actor.isKevinBacon()) {
-            System.out.println("found kevin");
             currentRoute.add(actor.name());
             routeMap.addAll(currentRoute);
             System.out.println(result());

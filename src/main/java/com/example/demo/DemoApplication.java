@@ -4,6 +4,7 @@ import com.example.DbLogic.TitleCrew.TitleCrewPojo;
 import com.example.DbLogic.TitleCrew.TitleCrewRowMapper;
 import com.example.DbLogic.TitleRated.TitleRateRowMapper;
 import com.example.DbLogic.TitleRated.TitleRatePojo;
+import com.example.baconator.Baconator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -26,16 +27,12 @@ public class DemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-		/*
-			Six degrees of Kevin Bacon :
-			Given a query by the user, you must provide what’s the degree of separation between the person
-			(e.g. actor or actress) the user has entered and Kevin Bacon.
+        sixDegreesOfKevinBacon();
+    }
 
-			Solutions:
-			https://www.baeldung.com/java-breadth-first-search
-			If BFS takes too much time, use brute force (random path until complete).
-			or develop BF and move into BFS as its the same basic design?
-		*/
+    private void sixDegreesOfKevinBacon() {
+        Baconator baconator = new Baconator();
+        //baconator.assignRoot();
     }
 
     /**

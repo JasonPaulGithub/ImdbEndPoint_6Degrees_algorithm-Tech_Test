@@ -5,8 +5,7 @@ import java.util.List;
 
 public class Placeholder {
 
-    private boolean isKevinBacon = false;
-    private List<Movie> movies = new ArrayList<>();
+    private final List<Movie> movies = new ArrayList<>();
 
     private String actorName;
 

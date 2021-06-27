@@ -25,21 +25,24 @@ public class BaconatorTests {
 
         Placeholder jeff = new Placeholder("jeff");
         Placeholder steve = new Placeholder("steve");
+        Placeholder dave = new Placeholder("dave");
+
+        Movie movie2 = new Movie("Movie 2");
+        Movie movie3 = new Movie("Movie 3");
+
         jeff.setMovies(movie1);
         movie1.setActors(steve);
 
-        Placeholder dave = new Placeholder("dave");
-        Movie movie2 = new Movie("Movie 2");
         steve.setMovies(movie2);
         movie2.setActors(dave);
 
-        Movie movie3 = new Movie("Movie 3");
         dave.setMovies(movie3);
         movie3.setActors(kevin);
 
         Baconator baconator = new Baconator();
         baconator.assignRoot(jeff);
         baconator.search();
+        assert (baconator.getRouteMapSize() == 7);
     }
 
 }
