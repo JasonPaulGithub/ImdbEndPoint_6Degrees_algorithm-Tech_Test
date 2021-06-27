@@ -1,15 +1,20 @@
 package com.example.baconator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Placeholder {
 
     private boolean isKevinBacon = false;
-    private List<Movie> movies;
+    private List<Movie> movies = new ArrayList<>();
 
     private String actorName;
 
-    public List<Movie> getMovies() {
+    public Placeholder(String name) {
+        this.actorName = name;
+    }
+
+    public List<Movie> getMovieList() {
         return movies;
     }
 

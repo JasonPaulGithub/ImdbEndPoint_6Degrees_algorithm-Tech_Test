@@ -1,39 +1,23 @@
 package com.example.baconator;
 
-import java.util.HashMap;
-import java.util.Map;
+import static com.example.baconator.BaconInterface.*;
 
 public class Baconator {
 
-    Map<Integer, Placeholder> routeMap = new HashMap<>();
-
+    // Constructor
     public Baconator(Placeholder root) {
-        routeMap.put(0, root);
+        routeMap.add(root.getActorName());
     }
 
-    private void assignBaconite(Placeholder subject) {
-
-        if(subject.isKevinBacon()){
-            System.out.println("Found him!");
-            // refine route
+    public String assignBaconite(Placeholder actor) {
+        Baconite loyalBaconite = new Baconite(actor, routeMap);
+        if (loyalBaconite.getResult()){
+            return String.join(",", routeMap);
         } else {
-            // get randomly selected movie not already cleared
-            stepToNextMovie();
-        };
-    }
-
-    private void stepToNextMovie() {
-        // handle with new Baconator? or create Bacon Child?
-    }
-
-    public String getRoute() {
-        StringBuilder route = new StringBuilder();
-        for (int x = 0; x < routeMap.size(); x++) {
-            route.append(routeMap.get(x).getActorName()).append(", ");
+            return "Could not find the bacon!";
         }
-        route.append(": ").append(routeMap.size()).append(" steps in total.");
-        return route.toString();
     }
+
 }
 
 /*
