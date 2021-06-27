@@ -1,4 +1,4 @@
-package com.example.DbLogic.Actor;
+package com.example.dbLogic.Actor;
 
 import org.springframework.jdbc.core.RowMapper;
 

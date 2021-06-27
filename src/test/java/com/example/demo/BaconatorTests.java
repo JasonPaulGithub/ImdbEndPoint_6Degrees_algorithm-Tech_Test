@@ -5,31 +5,26 @@ import com.example.baconator.Movie;
 import com.example.baconator.Placeholder;
 import org.junit.jupiter.api.Test;
 
+/**
+ * I built this prototype to test the logic. Later on my intention
+ * was to replace the hard coded values with values from the database.
+ */
+
 public class BaconatorTests {
 
-    Placeholder kevin = new Placeholder("Kevin Bacon");
-    Movie movie1 = new Movie("Movie 1");
-
     @Test
-    public void testPositiveBacon(){
-    }
+    public void testBaconatorWithoutDbLogic(){
 
-    @Test
-    public void testNegativeBacon(){
-        Placeholder actor = new Placeholder("Mr reeves");
-        actor.setMovies(new Movie("The Matrix"));
-    }
+        // Set up the Values for the test
+        Placeholder jeff = new Placeholder("Keanu Reeves");
+        Placeholder steve = new Placeholder("Bruce Willis");
+        Placeholder dave = new Placeholder("Kirsten Dunst");
+        Placeholder kevin = new Placeholder("Kevin Bacon");
+        Movie movie1 = new Movie("A Beautiful Mind");
+        Movie movie2 = new Movie("The Matrix");
+        Movie movie3 = new Movie("Die Hard");
 
-    @Test
-    public void testIfNextBacon(){
-
-        Placeholder jeff = new Placeholder("jeff");
-        Placeholder steve = new Placeholder("steve");
-        Placeholder dave = new Placeholder("dave");
-
-        Movie movie2 = new Movie("Movie 2");
-        Movie movie3 = new Movie("Movie 3");
-
+        // Set up the logic for the test by linking the actor and movie
         jeff.setMovies(movie1);
         movie1.setActors(steve);
 
@@ -39,10 +34,14 @@ public class BaconatorTests {
         dave.setMovies(movie3);
         movie3.setActors(kevin);
 
+        // We set up the object and assign its base value and search with recursion included
         Baconator baconator = new Baconator();
         baconator.assignRoot(jeff);
         baconator.search();
+
+        // We assert the final values of the test
         assert (baconator.getRouteMapSize() == 7);
+
     }
 
 }

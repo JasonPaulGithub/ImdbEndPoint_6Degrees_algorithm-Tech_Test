@@ -1,4 +1,4 @@
-package com.example.DbLogic.Actor;
+package com.example.dbLogic.Actor;
 
 /**
  * Data encapsulation class

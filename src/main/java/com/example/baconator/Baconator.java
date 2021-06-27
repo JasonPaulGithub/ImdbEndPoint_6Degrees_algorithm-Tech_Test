@@ -4,6 +4,10 @@ package com.example.baconator;
 
 import java.util.LinkedHashSet;
 
+/**
+ * The interface is used to track and manage the results of each recursive object involved with the search.
+ * */
+
 public class Baconator implements BaconInterface {
 
     private LinkedHashSet<String> currentRoute = new LinkedHashSet<>();
@@ -24,6 +28,7 @@ public class Baconator implements BaconInterface {
         this.actor = actor;
     }
 
+    // Parse the result from the interface
     public String result() {
         return "result: "
                 + String.join(",", routeMap)
@@ -41,14 +46,11 @@ public class Baconator implements BaconInterface {
             System.out.println(result());
         } else {
             for (Movie movie : actor.getMovieList()) {
-                System.out.println("Searching connected Movie : " + movie.title());
+                //System.out.println("Searching connected Movie : " + movie.title());
                 currentRoute.add(movie.title());
 
                 for (Placeholder actor : movie.getActors()) {
-                    if (traversed.contains(actor.name())) {
-                        System.out.println("Actor already searched :" + actor.name());
-                        // delete movie from movie.list and check list size, if size=0 return null
-                    } else {
+                    if (!traversed.contains(actor.name())) {
                         System.out.println("searching " + actor.name());
                         traversed.add(actor.name());
                         currentRoute.add(actor.name());
@@ -56,6 +58,9 @@ public class Baconator implements BaconInterface {
                         baconite.setActor(actor);
                         baconite.setCurrentRoute(currentRoute);
                         baconite.search();
+                    //} else {
+                        //System.out.println("Actor already searched :" + actor.name());
+                        // delete movie from movie.list and check list size, if size=0 return null
                     }
                 }
             }

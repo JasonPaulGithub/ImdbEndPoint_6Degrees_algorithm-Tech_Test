@@ -1,4 +1,4 @@
-package com.example.DbLogic.Title;
+package com.example.dbLogic.Title;
 
 import org.springframework.jdbc.core.RowMapper;
 

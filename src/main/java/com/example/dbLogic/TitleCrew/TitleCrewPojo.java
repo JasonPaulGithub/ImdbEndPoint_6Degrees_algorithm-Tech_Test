@@ -1,7 +1,7 @@
-package com.example.DbLogic.TitleCrew;
+package com.example.dbLogic.TitleCrew;
 
-import com.example.DbLogic.Actor.ActorPojo;
-import com.example.DbLogic.Title.TitlePojo;
+import com.example.dbLogic.Actor.ActorPojo;
+import com.example.dbLogic.Title.TitlePojo;
 
 import java.util.List;
 

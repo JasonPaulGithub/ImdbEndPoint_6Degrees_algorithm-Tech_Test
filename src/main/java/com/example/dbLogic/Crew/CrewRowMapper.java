@@ -1,4 +1,4 @@
-package com.example.DbLogic.Crew;
+package com.example.dbLogic.Crew;
 
 import org.springframework.jdbc.core.RowMapper;
 

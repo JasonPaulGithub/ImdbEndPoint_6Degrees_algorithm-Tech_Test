@@ -1,6 +1,6 @@
-package com.example.DbLogic.TitleRated;
+package com.example.dbLogic.TitleRated;
 
-import com.example.DbLogic.Title.TitlePojo;
+import com.example.dbLogic.Title.TitlePojo;
 
 public class TitleRatePojo extends TitlePojo {
 

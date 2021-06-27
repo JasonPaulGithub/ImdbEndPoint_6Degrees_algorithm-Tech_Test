@@ -5,9 +5,12 @@ import java.util.List;
 
 public class Placeholder {
 
-    private final List<Movie> movies = new ArrayList<>();
+    /**
+     * I wanted to avoid reusing the name "actor" , so "placeholder" was used to also determine writers, directors, etc
+     */
 
-    private String actorName;
+    private final List<Movie> movies = new ArrayList<>();
+    private final String actorName;
 
     public Placeholder(String name) {
         this.actorName = name;
@@ -21,8 +24,8 @@ public class Placeholder {
         this.movies.add(movie);
     }
 
-    public void setActorName(String actorName) {
-        this.actorName = actorName;
+    public void setDbMovies(String dbMovies) {
+        System.out.println(movies);
     }
 
     public String name() {

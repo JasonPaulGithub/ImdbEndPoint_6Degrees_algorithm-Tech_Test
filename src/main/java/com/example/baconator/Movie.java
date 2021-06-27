@@ -5,15 +5,11 @@ import java.util.List;
 
 public class Movie {
 
-    private String movieTitle;
-    private List<Placeholder> actors = new ArrayList<>();
+    private final String movieTitle;
+    private final List<Placeholder> actors = new ArrayList<>();
 
     public String title() {
         return movieTitle;
-    }
-
-    public void setMovieTitle(String movieTitle) {
-        this.movieTitle = movieTitle;
     }
 
     public Movie(String movieTitle) {

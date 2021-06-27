@@ -1,7 +1,7 @@
-package com.example.DbLogic.TitleCrew;
+package com.example.dbLogic.TitleCrew;
 
-import com.example.DbLogic.Actor.ActorPojo;
-import com.example.DbLogic.Actor.ActorRowMapper;
+import com.example.dbLogic.Actor.ActorPojo;
+import com.example.dbLogic.Actor.ActorRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 

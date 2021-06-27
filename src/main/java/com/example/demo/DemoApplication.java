@@ -1,10 +1,9 @@
 package com.example.demo;
 
-import com.example.DbLogic.TitleCrew.TitleCrewPojo;
-import com.example.DbLogic.TitleCrew.TitleCrewRowMapper;
-import com.example.DbLogic.TitleRated.TitleRateRowMapper;
-import com.example.DbLogic.TitleRated.TitleRatePojo;
-import com.example.baconator.Baconator;
+import com.example.dbLogic.TitleCrew.TitleCrewPojo;
+import com.example.dbLogic.TitleCrew.TitleCrewRowMapper;
+import com.example.dbLogic.TitleRated.TitleRateRowMapper;
+import com.example.dbLogic.TitleRated.TitleRatePojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -27,12 +26,11 @@ public class DemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        sixDegreesOfKevinBacon();
+        sixDegreesOfKevinBacon("Bruce Lee");
     }
 
-    private void sixDegreesOfKevinBacon() {
-        Baconator baconator = new Baconator();
-        //baconator.assignRoot();
+    private void sixDegreesOfKevinBacon(String name) {
+        // Please check com.example.demo.BaconatorTests//
     }
 
     /**
