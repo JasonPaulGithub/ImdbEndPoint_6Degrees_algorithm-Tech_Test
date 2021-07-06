@@ -2,7 +2,9 @@ package com.example.baconator;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * A simple Movie Pojo
+ * */
 public class Movie {
 
     private final String movieTitle;

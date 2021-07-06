@@ -30,12 +30,12 @@ public class DemoApplication implements CommandLineRunner {
     }
 
     private void sixDegreesOfKevinBacon(String name) {
-        // Please check com.example.demo.BaconatorTests//
+        // Please check com.example.demo.BaconatorTests //
     }
 
     /**
      * Search by movie’s primary title.
-     * http://localhost:8080/originaltitle?title=Post%20No%20Bills
+     * http://localhost:8080/primarytitle?title=Post%20No%20Bills
      */
     @RestController
     public class findByPrimaryTitle {
@@ -58,7 +58,7 @@ public class DemoApplication implements CommandLineRunner {
     public class findByOriginalTitle {
         @GetMapping("/originaltitle")
         public List<TitleCrewPojo> originalTitle(
-                @RequestParam(value = "title", defaultValue = "Miss Jerry") String title) {
+                @RequestParam(value = "title") String title) {
             String sql =
                     "SELECT * FROM title_basics INNER JOIN title_crew " +
                             "ON title_basics.tconst = title_crew.tconst " +

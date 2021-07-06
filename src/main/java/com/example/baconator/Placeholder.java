@@ -2,12 +2,11 @@ package com.example.baconator;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * A simple "Actor" pojo.
+ * I wanted to avoid reusing the name "actor" , so "placeholder" was used to also determine writers, directors, etc
+ */
 public class Placeholder {
-
-    /**
-     * I wanted to avoid reusing the name "actor" , so "placeholder" was used to also determine writers, directors, etc
-     */
 
     private final List<Movie> movies = new ArrayList<>();
     private final String actorName;

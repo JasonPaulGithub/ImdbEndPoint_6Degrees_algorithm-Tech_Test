@@ -1,26 +1,25 @@
-// The brave Baconite travels the land far and wide to find the rare bacon known as Kevin.
-
+// The brave Baconite travels the land far and wide to find the rare bacon known as Kevin!
 package com.example.baconator;
 
 import java.util.LinkedHashSet;
-
-/**
- * The interface is used to track and manage the results of each recursive object involved with the search.
- * */
 
 public class Baconator implements BaconInterface {
 
     private LinkedHashSet<String> currentRoute = new LinkedHashSet<>();
     private Placeholder actor;
 
+    // Setters and Getters
     public void setCurrentRoute(LinkedHashSet<String> currentRoute) {
         this.currentRoute = currentRoute;
     }
-
     public void setActor(Placeholder actor) {
         this.actor = actor;
     }
+    public int getRouteMapSize(){
+        return routeMap.size();
+    }
 
+    // Set the first node
     public void assignRoot(Placeholder actor) {
         routeMap.add(actor.name());
         traversed.add(actor.name());
@@ -35,10 +34,7 @@ public class Baconator implements BaconInterface {
                 + " in " + getRouteMapSize() + " steps";
     }
 
-    public int getRouteMapSize(){
-        return routeMap.size();
-    }
-
+    // Run our recursive search
     public void search() {
         if (actor.isKevinBacon()) {
             currentRoute.add(actor.name());
